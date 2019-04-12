@@ -1,0 +1,71 @@
+#root {
+  min-height: 100vh;
+  overflow: hidden;
+  color: @color-info;
+  font-family: 'Atarian';
+  font-size: 15pt;
+  letter-spacing: 2px;
+}
+.App {
+  text-align: center;
+  overflow: hidden;
+}
+.flex-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+}
+.full-width {
+  width: 100%;
+}
+.App-logo {
+  animation: App-logo-spin infinite 1s ease-in-out;
+  animation-direction: alternate-reverse;
+  width: 100px;
+}
+
+.App-header {
+  display: flex;
+  justify-content: space-between;
+  font-family: 'cataclysmo';
+  font-size: calc(10px + 2vmin);
+  color: white;
+  border-bottom: 20px dashed @green;
+}
+
+.grid-box {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+  list-style: none;
+  &__item {
+    text-align: center;
+    width: 285px;
+    margin: 30px;
+    border-radius: 10px;
+    .image {
+      height: 170px;
+      width: 100%;
+      border-top: 4px solid @green-dark;
+      border-bottom: 4px solid @green-dark;
+      object-fit: cover;
+    }
+  }
+}
+
+.title {
+  font-family: 'cataclysmo';
+  color: @color-info;
+  letter-spacing: 2px;
+  margin: 15px 0;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(10deg);
+  }
+}

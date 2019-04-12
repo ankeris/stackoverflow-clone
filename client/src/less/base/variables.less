@@ -1,0 +1,35 @@
+@green: rgba(52, 81, 71, 1);
+@green-light: rgba(73, 114, 100, 1);
+@green-dark: rgba(33, 58, 70, 1);
+
+@color-danger: rgb(254, 74, 73);
+@color-success: rgb(60, 242, 145);
+@color-warning: rgb(241, 127, 41);
+@color-info: rgb(217, 228, 238);
+
+.bg {
+    &-dark {
+        background-color: @green-dark;
+    }
+    &-neutral {
+        background-color: @green;
+    }
+    &-light {
+        background-color: @green-light;
+    }
+}
+
+.text {
+    &-danger {
+        color: @color-danger;
+    }
+    &-success {
+        color: @color-success;
+    }
+    &-warning {
+        color: @color-warning;
+    }
+    &-info {
+        color: @color-info;
+    }
+}

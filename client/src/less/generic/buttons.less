@@ -1,0 +1,32 @@
+.link {
+    color: #61dafb;
+    text-decoration: underline;
+}
+
+.button {
+    color: aliceblue;
+    cursor: pointer;
+    transition-duration: 0.2s;
+    opacity: 1;
+    padding: 10px;
+    border-radius: 0.4rem;
+    &--small {
+        max-width: 200px;
+    }
+    &--serious {
+        background-color: @green-dark;
+    }
+    &--funky {
+        border: 2px solid @color-success !important;
+        &:hover {
+            border: 15px solid @color-info;
+            transform: rotate(-5deg) scale(1.1);
+        }
+    }
+    &--danger {
+        border: 2px solid @color-warning !important;
+        &:hover {
+            border: 2px solid @color-danger !important;
+        }
+    }
+}
