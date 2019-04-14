@@ -11,7 +11,7 @@ export default class ExpressRouter {
   }
 
   public init(): void {
-    this.router.get('/', HomeController.getDefault);
+    this.router.get('/:id', HomeController);
     this.app.use('/', this.router);
   }
 }
