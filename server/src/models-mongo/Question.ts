@@ -1,5 +1,8 @@
 import mongoose from 'mongoose';
+import { User } from './User';
 const Schema = mongoose.Schema;
+const ObjectId = Schema.Types.ObjectId
+
 
 const QuestionSchema = new Schema({
     title: {
@@ -15,8 +18,8 @@ const QuestionSchema = new Schema({
         required: false
     },
     createdBy: {
-        type: Object,
-        required: true
+        type: ObjectId,
+        ref: 'User' // Reference to some EventSchema
     },
     createdAt: {
         type: Date,
@@ -28,4 +31,4 @@ const QuestionSchema = new Schema({
     }
 });
 
-export const User = mongoose.model('user', QuestionSchema); 
+export const Question = mongoose.model('Questions', QuestionSchema); 

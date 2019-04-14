@@ -12,7 +12,7 @@ const UserSchema = new Schema({
     },
     points: {
         type: Number,
-        required: false
+        default: 0
     },
     createdAt: {
         type: Date,
@@ -20,4 +20,4 @@ const UserSchema = new Schema({
     }
 })
 
-export const User = mongoose.model('user', UserSchema); 
+export const User = mongoose.model('Users', UserSchema); 

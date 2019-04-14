@@ -1,6 +1,6 @@
 export type User = {
     name: String;
     image: String;
-    points: Number;
+    points?: Number;
     createdAt: Date;
 }
