@@ -26,7 +26,6 @@ export function getOne(req: Request, res: Response, next: NextFunction): void {
         return result
     })
   .catch(err => console.error(`Failed to find document: ${err}`))
-    
 }
 
 export function createQuestion(req: Request, res: Response): void {

@@ -4,9 +4,18 @@ import { User as UserType } from '../types/user.type';
 
 export function getOne(req: Request, res: Response, next: NextFunction): void {
     res.setHeader('Content-Type', 'application/json');
-    const data = {};
-    // Function to get all questions
-    res.send(data);
+    User.findOne({
+        "_id": req.params.id
+    })
+    .then(result => {
+        if(result) {
+        res.send(result);
+        } else {
+        res.json("No document matches the provided query.")
+        }
+        return result
+    })
+  .catch(err => console.error(`Failed to find document: ${err}`))
 }
 
 export function createUser(req: Request, res: Response): void {

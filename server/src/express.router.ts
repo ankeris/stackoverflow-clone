@@ -16,7 +16,7 @@ export default class ExpressRouter {
     // Get
     this.router.get('/questions', QuestionController.getAll);
     this.router.get('/questions/:id', QuestionController.getOne);
-    this.router.get('/user/:id', UserController.getOne);
+    this.router.get('/users/:id', UserController.getOne);
 
     // Post
     this.router.post('/questions/user/:userId', QuestionController.createQuestion);

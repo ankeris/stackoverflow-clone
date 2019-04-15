@@ -3,12 +3,13 @@ import {Comments} from '../models-mongo/Comment';
 import {Comment as CommentType} from '../types/comment.type';
 
 export function createComment(req: Request, res: Response): void {
-    const newItem = new Comments(<CommentType>{
+    const newCommentItem = new Comments(<CommentType>{
         body: req.body.body,
         createdBy: req.params.userId,
         question: req.params.questionId
     })
-    newItem.save().then(item => res.json(item))
+
+    newCommentItem.save().then(item => res.json(item))
 }
 
 export function upvoteComment(req: Request, res: Response): void {

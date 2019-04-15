@@ -28,10 +28,6 @@ const QuestionSchema = new Schema({
         type: Date,
         default: Date.now
     },
-    comments: [{
-        type: ObjectId,
-        ref: 'Comments',
-    }]
 });
 
 export const Questions = mongoose.model('Questions', QuestionSchema); 
