@@ -1,10 +1,9 @@
 {
-  "name": "minimum-nodejs-typescript-express",
+  "name": "stackoverflowclone",
   "version": "1.0.0",
-  "description": "A minimum typescript,nodejs and express application",
+  "description": "Serverside for stackoverflow clone",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "typescript": "tsc",
     "dev": "nodemon dist/app.js",
     "start": "npm-run-all -l -p typescript dev"
@@ -12,7 +11,8 @@
   "keywords": [
     "typescript",
     "nodejs",
-    "express"
+    "express",
+    "mongodb"
   ],
   "devDependencies": {
     "@types/dotenv": "^4.0.2",
@@ -29,6 +29,6 @@
     "express": "4.16.2",
     "mongoose": "^5.5.1"
   },
-  "author": "Juozas",
+  "author": "Juozas Rastenis",
   "license": "MIT"
 }
