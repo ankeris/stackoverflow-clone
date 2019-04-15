@@ -2,6 +2,7 @@ import { NextFunction, Request, Response, Router } from 'express';
 import { Questions } from '../models-mongo/Question';
 import { Question as QuestionType } from '../types/question.type';
 var ObjectID = require('mongodb').ObjectID;
+
 export function getAll(req: Request, res: Response, next: NextFunction): void {
     res.setHeader('Content-Type', 'application/json');
     Questions.find({}).populate('createdBy').exec((err: any, questions: Array<QuestionType>) => {
@@ -12,9 +13,20 @@ export function getAll(req: Request, res: Response, next: NextFunction): void {
 
 export function getOne(req: Request, res: Response, next: NextFunction): void {
     res.setHeader('Content-Type', 'application/json');
-    const data = {};
     // Function to get all questions
-    res.send(data);
+    Questions.findOne({
+        "_id": ObjectID(req.params.id)
+    })
+    .then(result => {
+        if(result) {
+        res.send(result);
+        } else {
+        res.json("No document matches the provided query.")
+        }
+        return result
+    })
+  .catch(err => console.error(`Failed to find document: ${err}`))
+    
 }
 
 export function createQuestion(req: Request, res: Response): void {
