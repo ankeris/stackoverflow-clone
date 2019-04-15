@@ -1,5 +1,4 @@
 import mongoose from 'mongoose';
-import { User } from './User';
 const Schema = mongoose.Schema;
 const ObjectId = Schema.Types.ObjectId
 
@@ -13,22 +12,26 @@ const QuestionSchema = new Schema({
         type: String,
         required: true
     },
-    rating: {
+    upvotesCount: {
         type: Number,
-        required: false
+        default: 0
+    },
+    upvotes: {
+        type: [ObjectId],
+        ref: 'Users'
     },
     createdBy: {
         type: ObjectId,
-        ref: 'User' // Reference to some EventSchema
+        ref: 'Users' // Reference to User schema
     },
     createdAt: {
         type: Date,
         default: Date.now
     },
-    comments: {
-        type: Array,
-        required: false
-    }
+    comments: [{
+        type: ObjectId,
+        ref: 'Comments',
+    }]
 });
 
-export const Question = mongoose.model('Questions', QuestionSchema); 
+export const Questions = mongoose.model('Questions', QuestionSchema); 

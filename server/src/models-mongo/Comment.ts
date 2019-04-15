@@ -1,22 +1,27 @@
 import mongoose from 'mongoose';
 const Schema = mongoose.Schema;
+const ObjectId = Schema.Types.ObjectId;
 
 const CommentSchema = new Schema({
     body: {
         type: String,
         required: true
     },
-    rating: {
+    upvotesCount: {
         type: Number,
-        required: false
+        default: 0
+    },
+    upvotes: {
+        type: [ObjectId],
+        ref: 'Users'
     },
     createdBy: {
-        type: Object,
-        required: true
+        type: ObjectId,
+        ref: 'Users'
     },
-    questionId: {
-        type: Array,
-        required: false
+    question: {
+        type: ObjectId,
+        ref: 'Questions'
     },
     createdAt: {
         type: Date,
@@ -24,4 +29,4 @@ const CommentSchema = new Schema({
     }
 })
 
-export const User = mongoose.model('Comments', CommentSchema); 
+export const Comments = mongoose.model('Comments', CommentSchema); 

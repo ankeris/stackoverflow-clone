@@ -1,6 +1,7 @@
 export type User = {
-    name: String;
-    image: String;
+    _id: string;
+    name: string;
+    image: string;
     points?: Number;
     createdAt: Date;
 }

@@ -1,7 +1,7 @@
 import { User } from "./user.type";
 
 export type Question = {
-    id: string;
+    _id: string;
     title: string;
     body: string;
     rating: number;

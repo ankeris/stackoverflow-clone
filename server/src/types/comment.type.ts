@@ -1,29 +1,12 @@
-import mongoose from 'mongoose';
-const Schema = mongoose.Schema;
+import { User } from "./user.type";
+import { Question } from "./question.type";
 
-const QuestionSchema = new Schema({
-    title: {
-        type: String,
-        required: true
-    },
-    body: {
-        type: String,
-        required: true
-    },
-    rating: {
-        type: Number,
-        required: false
-    },
-    createdBy: {
-        type: Object,
-        required: true
-    },
-    createdAt: {
-        type: Date,
-        default: Date.now
-    },
-    comments: {
-        type: Array,
-        required: false
-    }
-})
+export type Comment = {
+    _id: string;
+    body: string;
+    upvotesCount: number;
+    upvotes: Array<string | User>;
+    createdBy: User;
+    question: Question;
+    createdAt: Date
+}
