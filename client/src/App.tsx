@@ -1,28 +1,44 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState, ReactPropTypes } from 'react';
+import {
+  BrowserRouter,
+  Route,
+  Redirect,
+  Switch,
+} from 'react-router-dom'
+import Header from './containers/Header';
+import PageQuestions from './routes/PageQuestions';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.tsx</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
-  }
+function PrivateRoute ({component: Component, authed, ...rest}) {
+  return (
+    <Route
+      {...rest}
+      render={(props: any) => authed
+        ? <Component {...props} />
+        : <Redirect to={{pathname: '/login', state: {from: props.location}}} />}
+    />
+  )
 }
 
-export default App;
+const Scoreland = () => {
+  const [userAuthenticated, setUserAuthenticated] = useState<boolean>(false);
+
+  useEffect(() => {
+    setUserAuthenticated(true);
+  }, []);
+  return (
+    <BrowserRouter>
+      <Header />
+      <Switch>
+        {/* <Route path="/login" render={(props) => <Login {...props} setAuth={(e: any) => setUserAuthenticated(e)} />} /> */}
+        {/* <Route path="/register" render={(props: ReactPropTypes) => <Register {...props} />} /> */}
+        {/* <Route path="/auth" render={(props: ReactPropTypes) => <Auth {...props} />} /> */}
+        <PrivateRoute authed={userAuthenticated} path="/questions" component={PageQuestions} />
+        {/* <PrivateRoute authed={userAuthenticated} path="/game/:id" component={GamePage} /> */}
+        <Redirect from="/" to='/questions' />
+      </Switch>
+    </BrowserRouter>
+  )
+};
+/* <Redirect from="/" to='/library' />
+<Route component={NotFound}></Route> */
+export default Scoreland;
