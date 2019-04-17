@@ -385,6 +385,7 @@ template {
   overflow: hidden;
   font-size: 15pt;
   letter-spacing: 2px;
+  background-color: #dedede;
 }
 .App {
   text-align: center;

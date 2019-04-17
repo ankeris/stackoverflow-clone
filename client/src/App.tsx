@@ -7,6 +7,8 @@ import {
 } from 'react-router-dom'
 import Header from './containers/Header';
 import PageQuestions from './routes/PageQuestions';
+import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles';
+import {theme} from './services/theme';
 
 function PrivateRoute ({component: Component, authed, ...rest}) {
   return (
@@ -25,18 +27,21 @@ const Scoreland = () => {
   useEffect(() => {
     setUserAuthenticated(true);
   }, []);
+  
   return (
-    <BrowserRouter>
-      <Header />
-      <Switch>
-        {/* <Route path="/login" render={(props) => <Login {...props} setAuth={(e: any) => setUserAuthenticated(e)} />} /> */}
-        {/* <Route path="/register" render={(props: ReactPropTypes) => <Register {...props} />} /> */}
-        {/* <Route path="/auth" render={(props: ReactPropTypes) => <Auth {...props} />} /> */}
-        <PrivateRoute authed={userAuthenticated} path="/questions" component={PageQuestions} />
-        {/* <PrivateRoute authed={userAuthenticated} path="/game/:id" component={GamePage} /> */}
-        <Redirect from="/" to='/questions' />
-      </Switch>
-    </BrowserRouter>
+    <MuiThemeProvider theme={createMuiTheme(theme)}>
+      <BrowserRouter>
+        <Header />
+        <Switch>
+          {/* <Route path="/login" render={(props) => <Login {...props} setAuth={(e: any) => setUserAuthenticated(e)} />} /> */}
+          {/* <Route path="/register" render={(props: ReactPropTypes) => <Register {...props} />} /> */}
+          {/* <Route path="/auth" render={(props: ReactPropTypes) => <Auth {...props} />} /> */}
+          <PrivateRoute authed={userAuthenticated} path="/questions" component={PageQuestions} />
+          {/* <PrivateRoute authed={userAuthenticated} path="/game/:id" component={GamePage} /> */}
+          <Redirect from="/" to='/questions' />
+        </Switch>
+      </BrowserRouter>
+    </MuiThemeProvider>
   )
 };
 /* <Redirect from="/" to='/library' />
