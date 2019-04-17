@@ -1,11 +1,13 @@
 import { User } from "./user.type";
+import { Comment } from "./comment.type";
 
 export type Question = {
-    _id: string;
+    _id?: string;
     title: string;
-    body: string;
-    rating: number;
+    body?: string;
+    upvotesCount: number;
     createdBy: User;
     createdAt: Date;
-    comments: Array<Comment>;
+    upvotes?: Array<User>;
+    comments?: Array<Comment>;
 }
