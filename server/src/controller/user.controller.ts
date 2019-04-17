@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response, Router } from 'express';
 import { User } from '../models-mongo/User';
-import { User as UserType } from '../types/user.type';
+import { User as UserType } from '../../../sharedTypes/user.type';
 
 export function getOne(req: Request, res: Response, next: NextFunction): void {
     res.setHeader('Content-Type', 'application/json');

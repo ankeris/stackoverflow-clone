@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response, Router } from 'express';
 import {Comments} from '../models-mongo/Comment';
-import {Comment as CommentType} from '../types/comment.type';
+import {Comment as CommentType} from '../../../sharedTypes/comment.type'
 
 export function createComment(req: Request, res: Response): void {
     const newCommentItem = new Comments(<CommentType>{

@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response, Router } from 'express';
 import { Questions } from '../models-mongo/Question';
-import { Question as QuestionType } from '../types/question.type';
+import { Question as QuestionType } from '../../../sharedTypes/question.type';
 var ObjectID = require('mongodb').ObjectID;
 
 export function getAll(req: Request, res: Response, next: NextFunction): void {
