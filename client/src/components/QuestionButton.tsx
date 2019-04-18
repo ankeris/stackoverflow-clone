@@ -1,37 +1,61 @@
 import React from 'react';
-import { withStyles } from '@material-ui/core/styles';
+import PropTypes from 'prop-types';
 import Paper from '@material-ui/core/Paper';
+import { withStyles } from '@material-ui/core/styles';
+import Grid from '@material-ui/core/Grid';
+import Avatar from '@material-ui/core/Avatar';
 import Typography from '@material-ui/core/Typography';
 import {Question} from '../../../sharedTypes/question.type';
+import ButtonBase from '@material-ui/core/ButtonBase';
+import { CardActionArea } from '@material-ui/core';
 
 const styles = theme => ({
   root: {
-    ...theme.mixins.gutters(),
-    paddingTop: theme.spacing.unit * 2,
-    paddingBottom: theme.spacing.unit * 2,
-    maxWidth: '900px',
-    width: '100%',
-    margin: theme.spacing.unit * 2
+    flexGrow: 1,
+    overflow: 'hidden',
+    padding: `0 ${theme.spacing.unit * 3}px`,
   },
+  btn: {
+    width: '100%',
+    marginBottom: `${theme.spacing.unit * 2}px`,
+    maxWidth: '800px',
+  },
+  paper: {
+    padding: theme.spacing.unit * 2,
+  },
+  avatar: {
+    backgroundColor: theme.palette.primary.light,
+  }
 });
 
 interface Props extends Question {
     classes: any;
+    id: any;
+    handleClick: (id: string) => void;
 }
 
-const QuestionButton: React.FC<Props> = ({classes}) => {
-
+const QuestionButton: React.FC<Props> = ({handleClick, id, classes, title, upvotesCount, createdAt, createdBy}) => {
   return (
-    <>
-      <Paper className={classes.root} elevation={2}>
-        <Typography variant="h5" component="h3">
-          This is a sheet of paper.
-        </Typography>
-        <Typography component="p">
-          Paper can be used to build surface or other elements for your application.
-        </Typography>
-      </Paper>
-    </>
+        <CardActionArea className={classes.btn} onClick={() => handleClick(id)}>
+          <Paper className={classes.paper}>
+            <Grid container wrap="nowrap" spacing={16}>
+              <Grid item>
+                <Avatar color="primary" className={upvotesCount > 0 ? classes.avatar : null}>{upvotesCount}</Avatar>
+              </Grid>
+              <Grid item xs>
+                <Typography variant="h6" component="h3">{title}</Typography>
+              </Grid>
+              <Grid item>
+                <Typography align="right" variant="overline" gutterBottom>
+                  {createdBy.name}
+                </Typography>
+                <Typography align="right" variant="overline" gutterBottom>
+                  {createdAt}
+                </Typography>
+              </Grid>
+            </Grid>
+          </Paper>
+        </CardActionArea>
   );
 }
 

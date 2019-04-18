@@ -1,25 +1,29 @@
-import { Button, TextField } from "@material-ui/core";
+import { Button, TextField, Fab, Paper, Typography, Grid, withStyles } from "@material-ui/core";
 import Dialog from '@material-ui/core/Dialog';
-import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
-import { withTheme } from '@material-ui/core';
+import AddIcon from '@material-ui/icons/Add';
+import { unstable_Box as Box } from '@material-ui/core/Box';
 import { Form, Formik, Field } from "formik";
 import * as React from "react";
 import { InputField } from "../components/InputField";
+import { PostQuestionFormValues } from "../routes/PageQuestionsList";
 
-interface Values {
-  title: string;
-  bodyText: string;
-}
-
+const styles = theme => ({
+  paper: {
+    padding: theme.spacing.unit * 2,
+  },
+  palette: {
+    
+  }
+});
 interface Props {
-  onSubmit: (values: Values) => void;
-  theme?: any;
+  onSubmit: (values: PostQuestionFormValues) => void;
+  classes: any;
 }
 
-const FormDialog: React.FC<Props> = ({ onSubmit }) => {
+const FormDialog: React.FC<Props> = ({ classes, onSubmit }) => {
   const [open, setOpen] = React.useState(false);
 
   function handleClickOpen() {
@@ -31,10 +35,17 @@ const FormDialog: React.FC<Props> = ({ onSubmit }) => {
   }
 
   return (
-    <div>
-      <Button variant="contained" color="primary" onClick={handleClickOpen}>
-        Ask a question +
-      </Button>
+    <>
+      <Box mx="auto" bgcolor="background.paper" p={1} m={2}>
+        <Grid container alignItems="center" wrap="nowrap" className="palette">
+          <Box p={1}>
+            Add question
+          </Box>
+          <Fab color="primary" aria-label="Add" onClick={handleClickOpen}>
+            <AddIcon />
+          </Fab>
+        </Grid>
+      </Box>
       <Dialog open={open} onClose={handleClose} fullWidth={true} maxWidth={'md'} aria-labelledby="form-dialog-title">
         <DialogTitle id="form-dialog-title">Post a question to Pile Underflow!</DialogTitle>
         <DialogContent>
@@ -64,14 +75,13 @@ const FormDialog: React.FC<Props> = ({ onSubmit }) => {
                 <Button onClick={handleClose} color="secondary">
                   Cancel
                 </Button>
-                <pre>{JSON.stringify(values, null, 2)}</pre>
               </Form>
             )}
           </Formik>
         </DialogContent>
       </Dialog>
-    </div>
+    </>
   );
 }
 
-export default withTheme()(FormDialog);
+export default withStyles(styles)(FormDialog);
