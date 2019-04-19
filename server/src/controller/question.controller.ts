@@ -17,15 +17,11 @@ export function getOne(req: Request, res: Response, next: NextFunction): void {
     Questions.findOne({
         "_id": ObjectID(req.params.id)
     })
-    .then(result => {
-        if(result) {
+    .populate('createdBy')
+    .exec((err, result) => {
+        if (err) throw err;
         res.send(result);
-        } else {
-        res.json("No document matches the provided query.")
-        }
-        return result
     })
-  .catch(err => console.error(`Failed to find document: ${err}`))
 }
 
 export function createQuestion(req: Request, res: Response): void {

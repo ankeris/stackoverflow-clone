@@ -1,18 +1,24 @@
 import { Question } from "../../../sharedTypes/question.type";
 
-const ValidationService = {
+const QuestionService = {
     getAll: function() {
         return new Promise<Array<Question>>((res, rej) => {
             fetch('http://localhost:3001/api/questions')
             .then(function(data) {
                 const finalData= data.json();
                 res(finalData);
-            })
+            }).catch((err: Error) => rej(err))
         })
     },
 
-    getOne: function(value) {
-        //inspect the value
+    getOne: function(id: string) {
+        return new Promise<Array<Question>>((res, rej) => {
+            fetch('http://localhost:3001/api/questions/' + id)
+            .then(function(data) {
+                const finalData = data.json();
+                res(finalData);
+            }).catch((err: Error) => rej(err))
+        })
     },
     
     postQuestion: function({title, bodyText, userId}) {
@@ -33,4 +39,4 @@ const ValidationService = {
     }
 };
 
-export default ValidationService;
+export default QuestionService;
