@@ -11,6 +11,7 @@ import { theme } from './services/theme';
 import { User } from '../../sharedTypes/user.type';
 import PageQuestionsList from './routes/PageQuestionsList';
 import PageQuestion from './routes/PageQuestion';
+import Notification from './components/Notification';
 
 function PrivateRoute ({component: Component, authed, ...rest}) {
   return (
@@ -23,15 +24,22 @@ function PrivateRoute ({component: Component, authed, ...rest}) {
   )
 }
 
-export const UserContext = createContext({} as User);
+type AppContext = {
+  User: User;
+  notification?: Function;
+}
+
+export const UserContext = createContext({} as AppContext);
 
 const App = () => {
   const [userAuthenticated, setUserAuthenticated] = useState<boolean>(false);
+  const [notification, setNotification] = useState<string>('');
+
   const [user, setUser] = useState<User>({
     image: "https://www.wittenberg.edu/sites/default/files/2017-11/nouser_0.jpg",
     points: 5,
-    _id: "5cb39a7d41827e61cc786a13",
-    name: "Juozas Rastenis",
+    _id: "5cb9da272ac91617885f37da",
+    name: "Aurelius",
     createdAt: new Date()
   });
   
@@ -41,9 +49,10 @@ const App = () => {
   
   return (
     <MuiThemeProvider theme={createMuiTheme(theme)}>
-      <UserContext.Provider value={user}>
+      <UserContext.Provider value={{User: user, notification: (text: string): void => setNotification(text)}}>
         <BrowserRouter>
           <Header />
+          {notification ? <Notification text={notification} close={() => setNotification('')}/> : null}
           <Switch>
             {/* <Route path="/login" render={(props) => <Login {...props} setAuth={(e: any) => setUserAuthenticated(e)} />} /> */}
             {/* <Route path="/register" render={(props: ReactPropTypes) => <Register {...props} />} /> */}

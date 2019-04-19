@@ -1,12 +1,12 @@
 import React, { useState, useEffect, useReducer, useContext } from 'react';
 import PostQuestionsForm from '../containers/PostQuestionForm';
 import QuestionsService from '../services/questions.service';
-import QuestionButton from '../components/QuestionButton';
 import { Question } from '../../../sharedTypes/question.type';
 import { UserContext } from '../App';
 import { User } from '../../../sharedTypes/user.type';
-import Loading from '../components/Loading';
 import { RouteComponentProps } from 'react-router';
+import QuestionButton from '../components/QuestionButton';
+import Loading from '../components/Loading';
 
 export interface PostQuestionFormValues {
   title: string;
@@ -15,8 +15,9 @@ export interface PostQuestionFormValues {
 
 export default function PageQuestions(props: RouteComponentProps) {
   const [questions, setQuestions] = useState<Array<Question>>([]);
-  const user: User = useContext(UserContext);
-  
+  const user: User = useContext(UserContext).User;
+  const notification: any = useContext(UserContext).notification;
+
   const addQuestion = (data: PostQuestionFormValues) => {
     QuestionsService.postQuestion({...data, userId: user._id}).then(() => {
       // Retrieve new list after question posted
@@ -41,6 +42,7 @@ export default function PageQuestions(props: RouteComponentProps) {
         )
         : <Loading />
         }
+        <button onClick={() => notification('hello')}>notify</button>
     </div>
   );
 }
