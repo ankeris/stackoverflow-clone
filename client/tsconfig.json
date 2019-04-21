@@ -16,11 +16,15 @@
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "noEmit": true,
+    "skipDefaultLibCheck": true,
     "noImplicitAny": false,
     "jsx": "preserve",
     "isolatedModules": true
   },
   "include": [
-    "src"
+    "src/**/*"
+  ],
+  "exclude": [
+    "node_modules"
   ]
 }

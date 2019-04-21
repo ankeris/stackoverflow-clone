@@ -6,7 +6,8 @@ import {
   Switch,
 } from 'react-router-dom'
 import Header from './containers/Header';
-import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles';
+import createMuiTheme from '@material-ui/core/styles/createMuiTheme';
+import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider';
 import { theme } from './services/theme';
 import { User } from '../../sharedTypes/user.type';
 import PageQuestionsList from './routes/PageQuestionsList';
@@ -37,12 +38,11 @@ const App = () => {
 
   const [user, setUser] = useState<User>({
     image: "https://www.wittenberg.edu/sites/default/files/2017-11/nouser_0.jpg",
-    points: 5,
-    _id: "5cb9da272ac91617885f37da",
-    name: "Aurelius",
+    points: 0,
+    _id: "5cb39b8141827e61cc786a14",
+    name: "Lukas Deanshaw",
     createdAt: new Date()
   });
-  
   useEffect(() => {
     setUserAuthenticated(true);
   }, []);

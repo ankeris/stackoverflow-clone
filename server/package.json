@@ -4,7 +4,7 @@
   "description": "Serverside for stackoverflow clone",
   "main": "app.js",
   "scripts": {
-    "typescript": "tsc",
+    "typescript": "tsc -p tsconfig.json",
     "dev": "nodemon dist/server/src/app.js",
     "start": "npm-run-all -l -p typescript dev"
   },
