@@ -1,9 +1,14 @@
-import { Button, TextField, Fab, Paper, Typography, Grid, withStyles } from "@material-ui/core";
+import withStyles from "@material-ui/core/styles/withStyles";
+import Button from "@material-ui/core/Button";
+import Fab from "@material-ui/core/Fab";
+import Grid from "@material-ui/core/Grid";
 import Dialog from '@material-ui/core/Dialog';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import AddIcon from '@material-ui/icons/Add';
+
+
 import { unstable_Box as Box } from '@material-ui/core/Box';
 import { Form, Formik, Field } from "formik";
 import * as React from "react";
@@ -12,11 +17,8 @@ import { PostQuestionFormValues } from "../routes/PageQuestionsList";
 
 const styles = theme => ({
   paper: {
-    padding: theme.spacing.unit * 2,
+    padding: 15,
   },
-  palette: {
-    
-  }
 });
 interface Props {
   onSubmit: (values: PostQuestionFormValues) => void;

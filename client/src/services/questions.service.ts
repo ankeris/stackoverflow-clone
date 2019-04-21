@@ -12,7 +12,7 @@ const QuestionService = {
     },
 
     getOne: function(id: string) {
-        return new Promise<Array<Question>>((res, rej) => {
+        return new Promise<Question>((res, rej) => {
             fetch('http://localhost:3001/api/questions/' + id)
             .then(function(data) {
                 const finalData = data.json();

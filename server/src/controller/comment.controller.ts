@@ -8,7 +8,6 @@ export function createComment(req: Request, res: Response): void {
         createdBy: req.params.userId,
         question: req.params.questionId
     })
-
     newCommentItem.save().then(item => res.json(item))
 }
 
@@ -25,6 +24,13 @@ export function upvoteComment(req: Request, res: Response): void {
         })
         .then((obj) => res.json(obj))
         .catch(err => console.log(err))
+}
+
+export function getAllForQuestion(req: Request, res: Response): void {
+    Comments.find({question: req.params.id}).populate('createdBy').exec((err: any, comments: Array<CommentType>) => {
+        if (err) throw err;
+        res.send(comments);
+    })
 }
 
 export function deleteComment(req: Request, res: Response): void {

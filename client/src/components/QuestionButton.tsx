@@ -1,13 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Paper from '@material-ui/core/Paper';
-import { withStyles } from '@material-ui/core/styles';
+import withStyles from '@material-ui/core/styles/withStyles';
 import Grid from '@material-ui/core/Grid';
 import Avatar from '@material-ui/core/Avatar';
 import Typography from '@material-ui/core/Typography';
 import {Question} from '../../../sharedTypes/question.type';
-import ButtonBase from '@material-ui/core/ButtonBase';
-import { CardActionArea } from '@material-ui/core';
+import CardActionArea from '@material-ui/core/CardActionArea';
 
 const styles = theme => ({
   root: {

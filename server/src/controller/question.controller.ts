@@ -3,7 +3,7 @@ import { Questions } from '../models-mongo/Question';
 import { Question as QuestionType } from '../../../sharedTypes/question.type';
 var ObjectID = require('mongodb').ObjectID;
 
-export function getAll(req: Request, res: Response, next: NextFunction): void {
+export function getAll(req: Request, res: Response): void {
     res.setHeader('Content-Type', 'application/json');
     Questions.find({}).populate('createdBy').exec((err: any, questions: Array<QuestionType>) => {
         if (err) throw err;
@@ -11,7 +11,7 @@ export function getAll(req: Request, res: Response, next: NextFunction): void {
     })
 }
 
-export function getOne(req: Request, res: Response, next: NextFunction): void {
+export function getOne(req: Request, res: Response): void {
     res.setHeader('Content-Type', 'application/json');
     // Function to get all questions
     Questions.findOne({

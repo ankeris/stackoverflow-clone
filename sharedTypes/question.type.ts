@@ -9,5 +9,4 @@ export type Question = {
     createdBy: User;
     createdAt: Date;
     upvotes?: Array<User>;
-    comments?: Array<Comment>;
 }

@@ -16,8 +16,8 @@ export default class ExpressRouter {
     // Get
     this.router.get('/questions', QuestionController.getAll);
     this.router.get('/questions/:id', QuestionController.getOne);
+    this.router.get('/questions/:id/comments', CommentController.getAllForQuestion);
     this.router.get('/users/:id', UserController.getOne);
-
     // Post
     this.router.post('/questions/user/:userId', QuestionController.createQuestion);
     this.router.post('/questions/:questionId/user/:userId', CommentController.createComment);
@@ -29,7 +29,7 @@ export default class ExpressRouter {
 
     // Delete
     this.router.delete('/questions/:questionId', QuestionController.deleteQuestion);
-    this.router.delete('/questions/:questionId', CommentController.deleteComment);
+    this.router.delete('/questions/:questionId/comment/', CommentController.deleteComment);
 
     this.app.use('/api/', this.router);
   }
