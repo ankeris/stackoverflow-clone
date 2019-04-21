@@ -25,3 +25,7 @@ export function createUser(req: Request, res: Response): void {
     })
     newItem.save().then(item => res.json(item))
 }
+
+export function login(req: Request, res: Response): void {
+    
+}

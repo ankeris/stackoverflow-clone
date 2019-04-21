@@ -18,10 +18,12 @@ export default class ExpressRouter {
     this.router.get('/questions/:id', QuestionController.getOne);
     this.router.get('/questions/:id/comments', CommentController.getAllForQuestion);
     this.router.get('/users/:id', UserController.getOne);
+    
     // Post
     this.router.post('/questions/user/:userId', QuestionController.createQuestion);
     this.router.post('/questions/:questionId/user/:userId', CommentController.createComment);
     this.router.post('/user/', UserController.createUser);
+    this.router.post('/users/login', UserController.login);
 
     // Update
     this.router.patch('/questions/upvote/:questionId/user/:userId', QuestionController.upvoteQuestion);

@@ -13,6 +13,7 @@ import { User } from '../../sharedTypes/user.type';
 import PageQuestionsList from './routes/PageQuestionsList';
 import PageQuestion from './routes/PageQuestion';
 import Notification from './components/Notification';
+import PageAuthentication from './routes/PageAuthentication';
 
 function PrivateRoute ({component: Component, authed, ...rest}) {
   return (
@@ -56,7 +57,7 @@ const App = () => {
           <Switch>
             {/* <Route path="/login" render={(props) => <Login {...props} setAuth={(e: any) => setUserAuthenticated(e)} />} /> */}
             {/* <Route path="/register" render={(props: ReactPropTypes) => <Register {...props} />} /> */}
-            {/* <Route path="/auth" render={(props: ReactPropTypes) => <Auth {...props} />} /> */}
+            <Route path="/login" render={(props: any) => <PageAuthentication {...props} />} />
             <PrivateRoute authed={userAuthenticated} path="/questions/:id" component={PageQuestion} />
             <PrivateRoute authed={userAuthenticated} path="/questions" component={PageQuestionsList} />
             {/* <PrivateRoute authed={userAuthenticated} path="/game/:id" component={GamePage} /> */}
