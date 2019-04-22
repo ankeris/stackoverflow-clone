@@ -6,6 +6,10 @@ const UserSchema = new Schema({
         type: String,
         required: true
     },
+    password: {
+        type: String,
+        required: true
+    },
     image: {
         type: String,
         default: 'https://www.wittenberg.edu/sites/default/files/2017-11/nouser_0.jpg'

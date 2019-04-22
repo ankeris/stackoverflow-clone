@@ -1,5 +1,4 @@
 import { User } from "./user.type";
-import { Comment } from "./comment.type";
 
 export type Question = {
     _id?: string;
@@ -8,5 +7,5 @@ export type Question = {
     upvotesCount: number;
     createdBy: User;
     createdAt: Date;
-    upvotes?: Array<User>;
-}
+    upvotes?: Array<string>;
+};
