@@ -15,7 +15,7 @@ export const addTokenHeader = () => {
 const UsertService = {
     registerUser: function({ username, password }) {
         return new Promise<RegisterFeedback>((resolve, reject) => {
-            fetch(`http://localhost:3001/api/users/`, {
+            fetch(`${process.env.REACT_APP_API_URL}/users/`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
@@ -34,7 +34,7 @@ const UsertService = {
     },
     login: ({ username, password }) => {
         return new Promise<any>((resolve, reject) => {
-            fetch(`http://localhost:3001/api/users/login`, {
+            fetch(`${process.env.REACT_APP_API_URL}/users/login`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"

@@ -4,7 +4,7 @@ import { addTokenHeader } from "./users.service";
 const QuestionService = {
     getAll: function() {
         return new Promise<Array<Question>>((res, rej) => {
-            fetch("http://localhost:3001/api/questions", { headers: addTokenHeader() })
+            fetch(`${process.env.REACT_APP_API_URL}/questions`, { headers: addTokenHeader() })
                 .then(function(data) {
                     const finalData = data.json();
                     res(finalData);
@@ -15,7 +15,7 @@ const QuestionService = {
 
     getOne: function(id: string) {
         return new Promise<Question>((res, rej) => {
-            fetch(`http://localhost:3001/api/questions/${id}`, { headers: addTokenHeader() })
+            fetch(`${process.env.REACT_APP_API_URL}/questions/${id}`, { headers: addTokenHeader() })
                 .then(function(data) {
                     const finalData = data.json();
                     res(finalData);
@@ -26,7 +26,7 @@ const QuestionService = {
 
     postQuestion: function({ title, bodyText, userId }) {
         return new Promise<Question>((res, rej) => {
-            fetch(`http://localhost:3001/api/questions/user/${userId}`, {
+            fetch(`${process.env.REACT_APP_API_URL}/questions/user/${userId}`, {
                 method: "POST",
                 headers: addTokenHeader(),
                 body: JSON.stringify({
@@ -39,7 +39,7 @@ const QuestionService = {
     },
     upvoteQuestion: (questionId, userId) => {
         return new Promise((res, rej) => {
-            fetch(`http://localhost:3001/api/questions/upvote/${questionId}/user/${userId}`, {
+            fetch(`${process.env.REACT_APP_API_URL}/questions/upvote/${questionId}/user/${userId}`, {
                 method: "PATCH",
                 headers: addTokenHeader()
             }).then(response => res(response.json()));
