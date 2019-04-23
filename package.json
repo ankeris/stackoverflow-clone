@@ -7,7 +7,7 @@
     "devDependencies": {},
     "scripts": {
         "start": "cd server && npm start",
-        "preinstall": "cd server && npm install"
+        "build": "cd server && npm install"
     },
     "repository": {
         "type": "git",
