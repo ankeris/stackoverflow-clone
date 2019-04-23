@@ -6,7 +6,7 @@
     "dependencies": {},
     "devDependencies": {},
     "scripts": {
-        "start": "node server/dist/server/src/app.js",
+        "start": "node dist/server/src/app.js",
         "build": "cd server && npm install"
     },
     "repository": {
