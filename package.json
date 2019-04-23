@@ -6,7 +6,8 @@
     "dependencies": {},
     "devDependencies": {},
     "scripts": {
-        "start": "npm install --prefix ./server && npm start --prefix ./server"
+        "start": "npm start --prefix ./server",
+        "build": "npm install --prefix ./server"
     },
     "repository": {
         "type": "git",
