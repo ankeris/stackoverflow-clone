@@ -6,8 +6,8 @@
     "dependencies": {},
     "devDependencies": {},
     "scripts": {
-        "start": "cd server && npm start",
-        "build": "cd server && npm install"
+        "start": "npm start --prefix ./server ",
+        "postinstall": "npm install --prefix ./server"
     },
     "repository": {
         "type": "git",
