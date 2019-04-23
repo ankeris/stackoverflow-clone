@@ -6,7 +6,7 @@
     "scripts": {
         "typescript": "tsc -p tsconfig.json",
         "dev": "nodemon dist/server/src/app.js",
-        "start": "npm run typescript && npm run dev"
+        "start": "npm-run-all -l -p typescript dev"
     },
     "keywords": [
         "typescript",
