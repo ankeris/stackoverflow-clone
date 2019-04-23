@@ -7,8 +7,7 @@
     "devDependencies": {},
     "scripts": {
         "start": "node server/dist/server/src/app.js",
-        "build": "cd server/ && npm install",
-        "prestart": "cd client/ && npm install && npm run build"
+        "build": "cd server && npm install"
     },
     "repository": {
         "type": "git",
