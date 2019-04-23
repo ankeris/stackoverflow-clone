@@ -12,6 +12,7 @@ import { Form, Formik, Field } from "formik";
 import * as React from "react";
 import { InputField } from "../components/InputField";
 import { PostQuestionFormValues } from "../routes/PageQuestionsList";
+import Typography from "@material-ui/core/Typography";
 
 const styles = theme => ({
     paper: {
@@ -41,7 +42,7 @@ const FormDialog: React.FC<Props> = ({ classes, onSubmit }) => {
     return (
         <>
             <Grid container alignItems="center" wrap="nowrap" className={classes.palette}>
-                Add question
+                <Typography variant="h6">Add question</Typography>
                 <Fab color="primary" aria-label="Add" onClick={handleClickOpen}>
                     <AddIcon />
                 </Fab>
