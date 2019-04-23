@@ -1,0 +1,22 @@
+{
+    "name": "stackoverflow-clone",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "dependencies": {},
+    "devDependencies": {},
+    "scripts": {
+        "start": "node server/dist/server/src/app.js",
+        "build": "cd server/ && npm install && cd ../client/ && npm install && npm run build"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/ankeris/stackoverflow-clone.git"
+    },
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/ankeris/stackoverflow-clone/issues"
+    },
+    "homepage": "https://github.com/ankeris/stackoverflow-clone#readme"
+}

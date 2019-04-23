@@ -2,13 +2,15 @@ import * as dotenv from "dotenv";
 import mongoose from "mongoose";
 import express from "express";
 import ExpressRotuer from "./express.router";
-import bodyParser = require("body-parser");
-
+import bodyParser from "body-parser";
+import path from "path";
 // Dotenv initialize
 dotenv.config();
 
 // Express initialize & settings
 const app = express();
+
+app.use(express.static(path.resolve(__dirname, "../../../../client/build")));
 
 // Passport config
 const expressRoutes = new ExpressRotuer(app);
@@ -23,6 +25,9 @@ app.use(function(req, res, next) {
 
 expressRoutes.init();
 
+app.get("/", function(req, res) {
+    res.sendFile(path.join(__dirname, "../../../../client/build", "index.html"));
+});
 // DB Connection
 mongoose
     .connect(process.env.MONGO_URI || "localhost:27017/test", { useNewUrlParser: true })
