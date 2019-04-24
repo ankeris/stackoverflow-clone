@@ -6,7 +6,7 @@
     "dependencies": {},
     "devDependencies": {},
     "scripts": {
-        "start": "npm prod --prefix ./server",
+        "start": "npm run prod --prefix ./server",
         "build": "npm install --prefix ./server"
     },
     "repository": {
