@@ -34,7 +34,7 @@ mongoose
     .then(() => console.log("MongoDB connected"))
     .catch((err: Error) => console.log(err));
 
-app.listen(process.env.PORT || 5000, () => {
+app.listen(process.env.PORT || 80, () => {
     console.log(`Express server app listening on port ${process.env.PORT}!`);
 });
 
