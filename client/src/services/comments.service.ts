@@ -14,7 +14,7 @@ const CommentService = {
     },
     postComment: function(question_id: string, user_id: any, bodyText) {
         return new Promise<Array<Comment>>((res, rej) => {
-            fetch(`${process.env.REACT_APP_API_URL}//questions/${question_id}/user/${user_id}`, {
+            fetch(`${process.env.REACT_APP_API_URL}/questions/${question_id}/user/${user_id}`, {
                 method: "POST",
                 headers: addTokenHeader(),
                 body: JSON.stringify({
