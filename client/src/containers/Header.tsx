@@ -48,7 +48,7 @@ function ButtonAppBar(props) {
                                 variant="contained"
                                 onClick={() => {
                                     localStorage.removeItem("token");
-                                    window.location.href = "/login";
+                                    window.location.href = "/";
                                 }}
                             >
                                 Log out
